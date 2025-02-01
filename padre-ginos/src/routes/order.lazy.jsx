@@ -1,16 +1,10 @@
+import { createLazyFileRoute } from "@tanstack/react-router";
+
 import { useContext, useEffect, useState } from "react";
-import Pizza from "./Pizza";
+import Pizza from "../Pizza";
 
-import Cart from "./Cart";
-import { MyContext } from "./contexts";
-// import { CartContext } from "./contexts";
-
-// outside of the render function
-// feel free to change en-US / USD to your locale
-// const intl = new Intl.NumberFormat("en-US", {
-//   style: "currency",
-//   currency: "USD",
-// });
+import Cart from "../Cart";
+import { CartContext } from "../contexts";
 
 const intl = new Intl.NumberFormat("en-AU", {
   style: "currency",
@@ -19,22 +13,18 @@ const intl = new Intl.NumberFormat("en-AU", {
 
 let counter = 0;
 
+export const Route = createLazyFileRoute("/order")({
+  component: Order,
+});
+
 function Order() {
-  // const pizzaTypes = "pepperoni";
-  // const pizzaSize = "M";
-
   console.log("Order component was rerendered", counter++);
-
-  // const [cart, setCart]
 
   const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaSize, setPizzaSize] = useState("M");
   const [pizzaType, setPizzaType] = useState("pepperoni");
-  // const [cart, setCart] = useState([]);
-  // const [cart, setCart] = useContext(CartContext);
+  const [cart, setCart] = useContext(CartContext);
 
-  const [cart, setCart] = MyContext.useCustomContext();
-  console.log({ cart });
   const [loading, setLoading] = useState(true);
 
   async function fetchPizzaTypes() {
@@ -62,9 +52,6 @@ function Order() {
     setLoading(true);
 
     await new Promise((resolve) => setTimeout(resolve, 5000));
-
-    // debugger;
-    // setLoading(false);
 
     await fetch("/api/order", {
       method: "POST",
@@ -168,5 +155,3 @@ function Order() {
     </div>
   );
 }
-
-export default Order;
