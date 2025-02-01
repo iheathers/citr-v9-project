@@ -1,9 +1,14 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import { scan } from "react-scan"; // import this BEFORE react
 import { createRoot } from "react-dom/client";
 
 import Order from "./Order";
+import Header from "./Header";
 import PizzaOfTheDay from "./PizzaOfTheDay";
+
+// import { CartContext } from "./contexts";
+
+import { MyContext } from "./contexts";
 
 if (typeof window !== "undefined") {
   scan({
@@ -13,14 +18,20 @@ if (typeof window !== "undefined") {
 }
 
 const App = () => {
+  // const cartHook = useState([]);
+
+  debugger;
+
+  const [contextValue, setContextValue] = useState([]);
+
   return (
-    // <StrictMode>
-    <div>
-      <h1>Welcome to Padre Gino's Pizza</h1>
-      <Order />
-      <PizzaOfTheDay />
-    </div>
-    // </StrictMode>
+    <MyContext.Provider value={contextValue}>
+      <div>
+        <Header />
+        <Order />
+        <PizzaOfTheDay />
+      </div>
+    </MyContext.Provider>
   );
 };
 

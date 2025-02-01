@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Pizza from "./Pizza";
 
 import Cart from "./Cart";
+import { MyContext } from "./contexts";
+// import { CartContext } from "./contexts";
 
 // outside of the render function
 // feel free to change en-US / USD to your locale
@@ -23,10 +25,16 @@ function Order() {
 
   console.log("Order component was rerendered", counter++);
 
+  // const [cart, setCart]
+
   const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaSize, setPizzaSize] = useState("M");
   const [pizzaType, setPizzaType] = useState("pepperoni");
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useContext(CartContext);
+
+  const [cart, setCart] = MyContext.useCustomContext();
+  console.log({ cart });
   const [loading, setLoading] = useState(true);
 
   async function fetchPizzaTypes() {
