@@ -2,11 +2,16 @@ import { StrictMode, useState } from "react";
 import { scan } from "react-scan"; // import this BEFORE react
 import { createRoot } from "react-dom/client";
 
+// import {QueryClient, QueryClientProvider} from ""
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 
 import { routeTree } from "./routeTree.gen";
 
 const router = createRouter({ routeTree });
+
+const queryClient = new QueryClient();
 
 if (typeof window !== "undefined") {
   scan({
@@ -18,7 +23,9 @@ if (typeof window !== "undefined") {
 const App = () => {
   return (
     <StrictMode>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </StrictMode>
   );
 };
