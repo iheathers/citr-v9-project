@@ -1,4 +1,4 @@
-import { StrictMode, useState } from "react";
+import { StrictMode } from "react";
 import { scan } from "react-scan"; // import this BEFORE react
 import { createRoot } from "react-dom/client";
 

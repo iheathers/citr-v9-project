@@ -1,19 +1,24 @@
 {
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.66.0",
+    "@tanstack/react-query-devtools": "^5.66.0",
     "@tanstack/router-devtools": "^1.99.0",
     "@tanstack/router-plugin": "^1.99.0",
+    "@testing-library/react": "^16.2.0",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/ui": "^3.0.4",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^15.14.0",
+    "happy-dom": "^16.8.1",
     "prettier": "^3.4.2",
     "react-scan": "^0.1.1",
-    "@tanstack/react-query-devtools": "^5.66.0",
-    "vite": "^6.0.11"
+    "vite": "^6.0.11",
+    "vitest": "^3.0.4",
+    "vitest-fetch-mock": "^0.4.3"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.66.0",
@@ -30,7 +35,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,css,html}\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "lint": "eslint"
   },
   "keywords": [],

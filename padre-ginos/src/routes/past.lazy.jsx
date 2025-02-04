@@ -25,7 +25,7 @@ function ErrorBoundaryWrappedPastOrderRoutes() {
 }
 
 function PastOrdersRoute() {
-  throw new Error("WTF");
+  // throw new Error("WTF");
 
   const [page, setPage] = useState(1);
 
