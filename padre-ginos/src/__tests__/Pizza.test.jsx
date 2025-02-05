@@ -16,7 +16,7 @@ test("alt text renders on Pizza image", () => {
 
   const img = screen.getByRole("img");
 
-screen.debug()
+  screen.debug();
 
   expect(img.src).toBe(src);
   expect(img.alt).toBe(name);
